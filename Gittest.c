@@ -1,8 +1,11 @@
 #include "stm32f10x.h"
-  
+#include "GitBranch.h"
+
 int main(void)
 {
-    unsigned int mclock=100;
+    unsigned int mclock=0;
+    unsigned int mtime=0;
+
     /* Enable clock for GPIOC */
     RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
 
@@ -35,6 +38,10 @@ int main(void)
         for (volatile int i = 0; i < 500000; i++)
         {
             mclock++;
+            if (mclock >= 100)
+            {
+                mtime ++;
+            }
         }
 
         /* Toggle PA11 and PB05 when PD5 key is pressed */
