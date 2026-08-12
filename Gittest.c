@@ -2,6 +2,7 @@
 
 int main(void)
 {
+    unsigned char checkb=10;
     /* Enable clock for GPIOC */
     RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
 
