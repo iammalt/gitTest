@@ -13,6 +13,10 @@ int main(void)
     GPIOA->CRH &= ~(GPIO_CRH_MODE11 | GPIO_CRH_CNF11);
     GPIOA->CRH |= GPIO_CRH_MODE11_0;
 
+            /* Configure PB05 as push-pull output, max speed 10 MHz */
+    GPIOB->CRH &= ~(GPIO_CRH_MODE05 | GPIO_CRH_CNF05);
+    GPIOB->CRH |= GPIO_CRH_MODE05_0;
+
     while (1)
     {
         /* Toggle PC13 */
@@ -25,5 +29,7 @@ int main(void)
         }
          /* Toggle PA11 */
         GPIOA->ODR ^= GPIO_ODR_ODR11;
+         /* Toggle PB05 */
+        GPIOB->ODR ^= GPIO_ODR_ODR05;
     }
 }
