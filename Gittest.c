@@ -41,6 +41,10 @@ int main(void)
             if (mclock >= 100)
             {
                 mtime ++;
+                if(mtime >= 1000)
+                {
+                    mtime = 0;
+                }
             }
         }
 
