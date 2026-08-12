@@ -1,6 +1,7 @@
 #include "stm32f10x.h"
 #include "GitBranch.h"
 
+//z
 int main(void)
 {
     unsigned int mclock=0;
