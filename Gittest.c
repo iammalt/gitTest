@@ -1,5 +1,5 @@
 #include "stm32f10x.h"
-
+  
 int main(void)
 {
     unsigned int mclock=0;
@@ -18,6 +18,14 @@ int main(void)
     GPIOB->CRH &= ~(GPIO_CRH_MODE05 | GPIO_CRH_CNF05);
     GPIOB->CRH |= GPIO_CRH_MODE05_0;
 
+    /* Enable clock for GPIOD */
+    RCC->APB2ENR |= RCC_APB2ENR_IOPDEN;
+
+    /* Configure PD5 as input pull-up */
+    GPIOD->CRL &= ~(GPIO_CRL_MODE5 | GPIO_CRL_CNF5);
+    GPIOD->CRL |= GPIO_CRL_CNF5_1;
+    GPIOD->ODR |= GPIO_ODR_ODR5;
+
     while (1)
     {
         /* Toggle PC13 */
@@ -28,9 +36,12 @@ int main(void)
         {
             mclock++;
         }
-         /* Toggle PA11 */
-        GPIOA->ODR ^= GPIO_ODR_ODR11;
-         /* Toggle PB05 */
-        GPIOB->ODR ^= GPIO_ODR_ODR05;
+
+        /* Toggle PA11 and PB05 when PD5 key is pressed */
+        if (!(GPIOD->IDR & GPIO_IDR_IDR5))
+        {
+            GPIOA->ODR ^= GPIO_ODR_ODR11;
+            GPIOB->ODR ^= GPIO_ODR_ODR05;
+        }
     }
 }
