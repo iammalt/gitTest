@@ -2,6 +2,7 @@
 
 int main(void)
 {
+    unsigned int mclock=0;
     /* Enable clock for GPIOC */
     RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
 
@@ -25,7 +26,7 @@ int main(void)
         /* Simple delay */
         for (volatile int i = 0; i < 500000; i++)
         {
-
+            mclock++;
         }
          /* Toggle PA11 */
         GPIOA->ODR ^= GPIO_ODR_ODR11;
