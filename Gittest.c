@@ -9,6 +9,10 @@ int main(void)
     GPIOC->CRH &= ~(GPIO_CRH_MODE13 | GPIO_CRH_CNF13);
     GPIOC->CRH |= GPIO_CRH_MODE13_0;
 
+        /* Configure PA11 as push-pull output, max speed 10 MHz */
+    GPIOA->CRH &= ~(GPIO_CRH_MODE11 | GPIO_CRH_CNF11);
+    GPIOA->CRH |= GPIO_CRH_MODE11_0;
+
     while (1)
     {
         /* Toggle PC13 */
@@ -17,7 +21,9 @@ int main(void)
         /* Simple delay */
         for (volatile int i = 0; i < 500000; i++)
         {
-            
+
         }
+         /* Toggle PA11 */
+        GPIOA->ODR ^= GPIO_ODR_ODR11;
     }
 }
