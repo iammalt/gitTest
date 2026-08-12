@@ -2,7 +2,7 @@
   
 int main(void)
 {
-    unsigned int mclock=0;
+    unsigned int mclock=100;
     /* Enable clock for GPIOC */
     RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
 
