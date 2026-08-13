@@ -2,5 +2,7 @@
 #define __GITBRANCH_H
 
 int addFuction(int a, int b);
+int SubFuction(int a, int b);
+
 
 #endif
