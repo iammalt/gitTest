@@ -5,7 +5,7 @@ int main(void)
 {
     unsigned int mclock=0;
     unsigned int mtime=0;
-
+    unsigned int   mmr_revert;
     /* Enable clock for GPIOC */
     RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
 
