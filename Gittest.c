@@ -47,12 +47,6 @@ int main(void)
                 }
             }
         }
-
-        /* Toggle PA11 and PB05 when PD5 key is pressed */
-        if (!(GPIOD->IDR & GPIO_IDR_IDR5))
-        {
-            GPIOA->ODR ^= GPIO_ODR_ODR11;
-            GPIOB->ODR ^= GPIO_ODR_ODR05;
-        }
+      
     }
 }
